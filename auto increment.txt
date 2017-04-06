@@ -1,0 +1,59 @@
+create table staff (
+  2    emp_id number primary key,
+  3    staff_name varchar2(100)
+  4  );
+
+Table created.
+
+SQL> create sequence emp_id_seq;
+
+Sequence created.
+Now, you can create a trigger that uses the sequence to populate the primary key
+
+SQL> create trigger trg_emp_id
+  2    before insert on staff
+  3    for each row
+  4  begin
+  5    select emp_id_seq.nextval
+  6      into :new.emp_id
+  7      from dual;
+  8  end;
+  9  /
+
+Trigger created.
+Now, when you insert data, you woon't need to specify the EMP_ID column-- it will automatically be populated by the trigger
+
+SQL> insert into staff( staff_name ) values ('Justin');
+
+1 row created.
+
+
+OleDbCommand cmd = new OleDbCommand("insert into register (ID,FULLNAME)  values (82909,'baqer')", con1);
+                con1.Open();
+                cmd.ExecuteNonQuery();
+                if (cmd.ExecuteNonQuery() > 0)
+                {
+                    MessageBox.Show("Record inserted");
+                }
+                else
+                {
+                    MessageBox.Show("Record failed");
+                }
+               
+
+SQL> select * from staff;
+if (comboBox1.SelectedItem == "weekdays")
+            {
+                comboBox2.Items.Add("Sunday");
+                comboBox2.Items.Add("Monday");
+                comboBox2.Items.Add("Tuesday");
+            }
+            else if (comboBox1.SelectedItem == "year")
+            {
+                comboBox2.Items.Add("2012");
+                comboBox2.Items.Add("2013");
+                comboBox2.Items.Add("2014");
+            }
+
+    '"+id.value+"'
+https://www.youtube.com/watch?v=0f-yMirnVe4&index=80&list=PLwj1YcMhLRN24KqNI0xQrNscBfLnYeJpL
